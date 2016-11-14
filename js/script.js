@@ -3,8 +3,9 @@ function getRandom() {
 	return Math.floor(Math.random()*9)+1
 };
 
-var currentBox;
-var previousBox;
+var currentBox = 0;
+var previousBox = 0;
+var clickedBox = 0;
 var flashArray = [];
 
 //record current box number (so the script can find an adjacent box)
@@ -26,10 +27,12 @@ function randomFlash() {
 	setTimeout(function() {
 		box.style.opacity = 0.3;
 	}, 1000);
-	flashArray.push(currentBox);
-	setPreviousBox(currentBox);
+	//flashArray.push(currentBox);
 	setCurrentBox(number);
-	console.log(currentBox);
+	setPreviousBox(currentBox);
+	
+	console.log("Current is box" + currentBox);
+	console.log("Previous is box" + previousBox);
 };
 
 //make an adjacent box flash (cannot be the previous box)
@@ -76,6 +79,7 @@ function adjacentFlash(currentBox) {
 	console.log(currentBox);
 };
 
+
 //set the timeout interval for the flashing boxes
 function makeFlash(i) {
   	setTimeout(function() { 
@@ -93,22 +97,56 @@ function makeFlash(i) {
 function multipleFlash(rounds) {
 	for (var i=0; i<rounds; i++) {
 		makeFlash(i);
-	};
-	
+	}
+};
+
+function makeClickedFlash(number) {
+	var boxName = "box" + String(number);
+	var box = document.getElementById(boxName);
+	box.style.opacity = 1;
+	setTimeout(function() {
+		box.style.opacity = 0.3;
+	}, 1000); 
 };
 
 //start the game
 function startGame() {
-	multipleFlash(10);
-	copySequence(10);
-	
+	randomFlash();
+	addListener();
 };
+
+//eventListener for clicks
+function addListener(){
+	var buttons = document.getElementsByClassName('memBox');
+
+	for (var i = 0; i < buttons.length; i++){
+	    buttons[i].onclick = function(){ 
+	    	
+	    	var number = parseInt(this.id.slice(-1));
+	    	makeClickedFlash(number);
+	    	clickedBox = number;
+	    	console.log("Clicked is box" + clickedBox);
+	    }
+	}
+};
+
 
 function copySequence(i) {
 	setTimeout(function() { 
   		alert("Copy the sequence");
   		
   	}, (i)*1000);
+};
+//these 2 functions don't work - uncaught type error, cannot read property style of null
+
+function changeOpacity(boxName){
+	var box = document.getElementById(boxName);
+	box.style.opacity = 1;
+};
+
+function removeOpacity(boxName){
+	var box = document.getElementById(boxName);
+	box.style.opacity = 0.3;
 };
 
 //on clicking memory box, the box lights up.

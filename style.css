@@ -59,12 +59,13 @@ body {
     width:32%;
     height:100px;
     display:inline-block;
-    opacity:0.3; !important;
+    opacity:0.3; 
 }
-
+/*
 .memBox:hover {
-    opacity:1;
+    opacity:1; !important;
 }
+*/
 
 #box1 {
     background-color:red;
