@@ -53,11 +53,17 @@ body {
     text-align: center;
 
 }
+/* MemoryBox screen styling */
 
 .memBox {
     width:32%;
     height:100px;
     display:inline-block;
+    opacity:0.3; !important;
+}
+
+.memBox:hover {
+    opacity:1;
 }
 
 #box1 {
@@ -88,6 +94,11 @@ body {
     background-color:blue;
 }
 
+#startButton {
+    text-align: center;
+}
+
+/* Mobile screen styling */
 @media screen and (max-width: 768px){   
               
    body{
