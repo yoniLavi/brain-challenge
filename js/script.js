@@ -3,8 +3,8 @@ function getRandom() {
 	return Math.floor(Math.random()*9)+1
 };
 
-//make one box flash
-function changeOpacity() {
+//make a random box flash
+function randomFlash() {
 	var number = getRandom();
 	var boxName = "box" + String(number);
 	var box = document.getElementById(boxName);
@@ -12,13 +12,12 @@ function changeOpacity() {
 	setTimeout(function() {
 		box.style.opacity = 0.3;
 	}, 1000);
-
 };
 
 //set the timeout interval for the flashing boxes
 function makeFlash(i) {
   	setTimeout(function() { 
-  		changeOpacity(); 
+  		adjacentFlash(); 
   	}, i*1000);
 };
 
@@ -30,7 +29,7 @@ function multipleFlash(rounds) {
 };
 
 function startGame() {
-	multipleFlash(5);
+	randomFlash();
 };
 
 /*function printArray(array1) {
