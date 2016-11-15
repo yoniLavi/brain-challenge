@@ -24,24 +24,22 @@ function setPreviousBox(number) {
 };
 
 //make a random box flash (the first box, to start the game)
-function randomFlash() {
+function pickRandomFlash() {
 	
 	roundCounter++;
 	var number = getRandom();
-	makeBoxFlash(number);
 	//flashArray.push(currentBox);
 	setCurrentBox(number);
 	setPreviousBox(currentBox);
 	storedSequence.push(number);
 	console.log("First flash is " + number)
-	console.log("Current is " + currentBox);
-	console.log("Previous is " + previousBox);
+	//console.log("Current is " + currentBox);
+	//console.log("Previous is " + previousBox);
 };
 
 //make an adjacent box flash (cannot be the previous box)
 function pickNextFlash(currentBox) {
 	
-	roundCounter++;
 	var nextOptions = [];
 
 	//get array of adjacent boxes to the current box
@@ -84,13 +82,25 @@ function makeBoxFlash(number) {
 	
 	var boxName = "box" + String(number);
 	var box = document.getElementById(boxName);
-	box.style.opacity = 1;
-  	
+	
+  	box.style.opacity = 1;
   	setTimeout(function() { 
-
 		box.style.opacity = 0.3;
 	
-  	}, number*1000);
+  	}, number * 1000);
+
+};
+
+//set the timeout interval for the flashing boxes
+function makeFlash(i) {
+  	setTimeout(function() { 
+  		if (i === 0) {
+  			randomFlash();
+  		} else {
+  			adjacentFlash(currentBox); 
+  		}
+  		
+  	}, i*1000);
 
 };
 
@@ -100,6 +110,16 @@ function makeSequenceFlash(rounds) {
 		makeBoxFlash(storedSequence[i]);
 	}
 };
+
+
+/*
+//make multiple boxes flash in sequence
+function multipleFlash(rounds) {
+	for (var i=0; i<rounds; i++) {
+		makeFlash(i);
+	}
+};
+*/
 
 function makeClickedFlash(number) {
 	var boxName = "box" + String(number);
@@ -112,9 +132,10 @@ function makeClickedFlash(number) {
 
 //start the game
 function startGame() {
-	randomFlash();
+	resetRound();
+	pickRandomFlash();
+	makeSequenceFlash();
 	addListener();
-	gameOn();
 };
 
 //eventListener for clicks
@@ -130,7 +151,8 @@ function addListener(){
 	    	console.log("Clicked is box" + clickedBox);
 	    	clickedSequence.push(number);
 	    	clickCounter++;
-	    	compareLastClick(clickCounter);
+	    	console.log("Click counter is " + clickCounter);
+	    	compareLastClick(clickCounter - 1);
 	    	if (storedSequence.length == clickedSequence.length) {
 	    		continueGame();
 	    	}
@@ -139,76 +161,74 @@ function addListener(){
 };
 
 
-//these 2 functions don't work - uncaught type error, cannot read property style of null
-
-function changeOpacity(boxName){
-	var box = document.getElementById(boxName);
-	box.style.opacity = 1;
-};
-
-function removeOpacity(boxName){
-	var box = document.getElementById(boxName);
-	box.style.opacity = 0.3;
-};
-
-//on clicking memory box, the box lights up.
-
-//round 1 - light one button, round 2 cannot start until user lights the same button
-
-//Add sound for the buttons.
-
-function gameOn() {
-	var i = 0;
-	while (gameStatus) {
-		if (i < 5) {
-			i++;
-		} else {
-			gameStatus = false;
-		}
-	}
-};
-
 function compareLastClick(number) {
 	if (clickedSequence[number] !== storedSequence[number]) {
 		gameStatus = false;
+		console.log("Game Over");
+		showRound();
+		
 	}
-	console.log("Last click compare executed")
-}
+	console.log("Compared " + clickedSequence[number] + " with " + storedSequence[number])
+	//console.log("Last click compare executed");
+	var storedString = printArray(storedSequence);
+	var clickedString = printArray(clickedSequence);
+	console.log("Stored sequence is " + storedString);
+	console.log("Clicked sequence is " + clickedString);
+};
 
+/*
 function compareSequences() {
 	if (storedSequence.length !== clickedSequence.length) {
 		gameStatus = false;
+		console.log("Game Over 3");
 	}
 
 	for (var i=0; i<storedSequence.length; i++) {
 		if (storedSequence[i] !== clickedSequence[i]) {
 			gameStatus = false;
+			console.log("Game Over 4");
 		}
 	}
 	console.log("Full compare has executed");
-};
+}; 
+*/
 
 function continueGame() {
 	roundCounter++;
-	pickNextFlash();
+	clickedSequence = [];
+	clickCounter = 0;
+	showRound();
+	console.log("Round counter is " + roundCounter);
+	pickNextFlash(currentBox);
 	makeSequenceFlash();
 };
 
-//test function
-function printNumber() {
-	var word = document.getElementById("currentNumber");
-	
-	/*var arrayWord = "";
+function printArray(name) {
+	var converted = name.toString();
+	return converted;
+}
 
-	for (var i=0; i<array1.length; i++) {
-		arrayWord += String(array1[i]);
+//test function
+function showRound() {
+	
+	var word = document.getElementById("roundNumber");
+
+	if (gameStatus) {
+		word.innerHTML = "Round " + String(roundCounter);
+	} else {
+		word.innerHTML = "Game Over"
 	}
-	randomNumber.innerHTML=arrayWord; 
-	console.log(arrayWord); */
-	
-	word.innerHTML = String(getCurrentBox());
 };
+
+function resetRound() {
+	var word = document.getElementById("roundNumber");
+	word.innerHTML = "Round 1";
+	roundCounter = 0;
+	storedSequence = [];
+}
 	
+
+//Add sound for the buttons.
 
 
  

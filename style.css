@@ -47,10 +47,12 @@ body {
 
 .sidePanel {
     flex:1;
+    text-align: center;
 }
 .gamePanel {
     flex:3;
     text-align: center;
+    
 
 }
 /* MemoryBox screen styling */
