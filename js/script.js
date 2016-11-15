@@ -7,6 +7,11 @@ var currentBox = 0;
 var previousBox = 0;
 var clickedBox = 0;
 var flashArray = [];
+var gameStatus = true;
+var storedSequence = [];
+var clickedSequence = [];
+var roundCounter = 0;
+var clickCounter = 0;
 
 //record current box number (so the script can find an adjacent box)
 function setCurrentBox(number) {
@@ -20,23 +25,23 @@ function setPreviousBox(number) {
 
 //make a random box flash (the first box, to start the game)
 function randomFlash() {
+	
+	roundCounter++;
 	var number = getRandom();
-	var boxName = "box" + String(number);
-	var box = document.getElementById(boxName);
-	box.style.opacity = 1;
-	setTimeout(function() {
-		box.style.opacity = 0.3;
-	}, 1000);
+	makeBoxFlash(number);
 	//flashArray.push(currentBox);
 	setCurrentBox(number);
 	setPreviousBox(currentBox);
-	
-	console.log("Current is box" + currentBox);
-	console.log("Previous is box" + previousBox);
+	storedSequence.push(number);
+	console.log("First flash is " + number)
+	console.log("Current is " + currentBox);
+	console.log("Previous is " + previousBox);
 };
 
 //make an adjacent box flash (cannot be the previous box)
-function adjacentFlash(currentBox) {
+function pickNextFlash(currentBox) {
+	
+	roundCounter++;
 	var nextOptions = [];
 
 	//get array of adjacent boxes to the current box
@@ -67,36 +72,32 @@ function adjacentFlash(currentBox) {
 	//pick random number from the available adjacent box options
 	var nextFlashNumber = nextOptions[Math.floor(Math.random() * nextOptions.length)];
 	
-	var nextFlash = "box" + String(nextFlashNumber);
-	
-	var box = document.getElementById(nextFlash);
-	box.style.opacity = 1;
-	setTimeout(function() {
-		box.style.opacity = 0.3;
-	}, 1000);
 	setPreviousBox(currentBox);
 	setCurrentBox(nextFlashNumber);
-	console.log(currentBox);
+	storedSequence.push(nextFlashNumber);
+	console.log("Next flash is " + nextFlashNumber);
 };
 
 
 //set the timeout interval for the flashing boxes
-function makeFlash(i) {
+function makeBoxFlash(number) {
+	
+	var boxName = "box" + String(number);
+	var box = document.getElementById(boxName);
+	box.style.opacity = 1;
+  	
   	setTimeout(function() { 
-  		if (i === 0) {
-  			randomFlash();
-  		} else {
-  			adjacentFlash(currentBox); 
-  		}
-  		
-  	}, i*1000);
+
+		box.style.opacity = 0.3;
+	
+  	}, number*1000);
 
 };
 
 //make multiple boxes flash in sequence
-function multipleFlash(rounds) {
-	for (var i=0; i<rounds; i++) {
-		makeFlash(i);
+function makeSequenceFlash(rounds) {
+	for (var i=0; i<storedSequence.length; i++) {
+		makeBoxFlash(storedSequence[i]);
 	}
 };
 
@@ -113,6 +114,7 @@ function makeClickedFlash(number) {
 function startGame() {
 	randomFlash();
 	addListener();
+	gameOn();
 };
 
 //eventListener for clicks
@@ -126,17 +128,17 @@ function addListener(){
 	    	makeClickedFlash(number);
 	    	clickedBox = number;
 	    	console.log("Clicked is box" + clickedBox);
+	    	clickedSequence.push(number);
+	    	clickCounter++;
+	    	compareLastClick(clickCounter);
+	    	if (storedSequence.length == clickedSequence.length) {
+	    		continueGame();
+	    	}
 	    }
 	}
 };
 
 
-function copySequence(i) {
-	setTimeout(function() { 
-  		alert("Copy the sequence");
-  		
-  	}, (i)*1000);
-};
 //these 2 functions don't work - uncaught type error, cannot read property style of null
 
 function changeOpacity(boxName){
@@ -154,6 +156,43 @@ function removeOpacity(boxName){
 //round 1 - light one button, round 2 cannot start until user lights the same button
 
 //Add sound for the buttons.
+
+function gameOn() {
+	var i = 0;
+	while (gameStatus) {
+		if (i < 5) {
+			i++;
+		} else {
+			gameStatus = false;
+		}
+	}
+};
+
+function compareLastClick(number) {
+	if (clickedSequence[number] !== storedSequence[number]) {
+		gameStatus = false;
+	}
+	console.log("Last click compare executed")
+}
+
+function compareSequences() {
+	if (storedSequence.length !== clickedSequence.length) {
+		gameStatus = false;
+	}
+
+	for (var i=0; i<storedSequence.length; i++) {
+		if (storedSequence[i] !== clickedSequence[i]) {
+			gameStatus = false;
+		}
+	}
+	console.log("Full compare has executed");
+};
+
+function continueGame() {
+	roundCounter++;
+	pickNextFlash();
+	makeSequenceFlash();
+};
 
 //test function
 function printNumber() {
