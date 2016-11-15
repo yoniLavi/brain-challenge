@@ -2,7 +2,14 @@
     <h1>{{title}}</h1>
 </div>
 <div class="gameContainer">
-	<div class="sidePanel"></div>
+	<div class="sidePanel" id="leftPanel">
+		<div id="instructions">
+			<h2>Instructions</h2>
+			<p>Copy the sequence by clicking on the coloured boxes in the same order you're shown.</p>
+			<p>The number of boxes in the sequence will increase by 1 every time.</p>
+			<p>Try and beat your high score!</p>
+		</div>
+	</div>
 	<div class="gamePanel">
 		<button type="button" class="memBox" id="box1"></button>
 		<button type="button" class="memBox" id="box2"></button>
@@ -15,7 +22,17 @@
 		<button type="button" class="memBox" id="box9"></button>
 	</div>
 	<div class="sidePanel">
-		<h2 id="roundNumber">Round 1</h2>
+		<div>
+			<h2 id="roundNumber">Round 1</h2>
+		</div>
+		<div id="yourScore">
+			<h2>Your Score</h2>
+			<p id="showScore">0</p>
+		</div>
+		<div id="highScore">
+			<h2>High Score</h2>
+			<p id="recordScore">0</p>
+		</div>
 	</div>
 </div>
 <br/>
