@@ -2,6 +2,18 @@
 	text-align: center;
 }
 
-.gameContainer {
+.gameBox {
 	display: flex;
+	flex-direction:row;
+	justify-content: space-around;
+	margin-right:auto; 
+	margin-left:auto;
+	width:60%;
+	border-radius: 10px;
+}
+
+.pieceBox {
+	width:100px;
+	height:100px;
+	border:1px solid black;
 }

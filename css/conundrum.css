@@ -1,0 +1,35 @@
+#instruction {
+	text-align: center;
+}
+
+.conundrumGrid, .solutionGrid {
+	display: flex;
+	flex-direction:row;
+	justify-content: space-around;
+	margin-right:auto; 
+	margin-left:auto;
+	border-radius: 10px;
+	width:70%;
+}
+
+.letterBox {
+	width:75px;
+	height:75px;
+	border:1px solid black;
+	background-color: rgb(193,28,28);
+	font-size:48px;
+	color:white;
+	text-align:center;
+	font-weight:bold;
+}
+#solveBox {
+	text-align: center;
+}
+
+#submit {
+	align:right;
+}
+
+#newButton {
+	text-align: center;
+}

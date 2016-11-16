@@ -8,14 +8,17 @@
 .sidePanel {
     flex:1;
     text-align: center;
+    
+    padding:20px;
 }
 #leftPanel {
-    padding:20px;
+    
 }
 
 .gamePanel {
     flex:3;
     text-align: center;
+    
 }
 
 
@@ -27,7 +30,7 @@
     width:32%;
     height:100px;
     display:inline-block;
-    opacity:0.3; 
+    opacity:0.45; 
 }
 /*
 .memBox:hover {
@@ -42,7 +45,7 @@
     background-color:lightskyblue;
 }
 #box3 {
-    background-color:pink;
+    background-color:#FF69B4;
 }
 #box4 {
     background-color:purple;
