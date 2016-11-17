@@ -20,7 +20,8 @@ var roundCounter = 0;
 var clickCounter = 0;
 var gameSpeed = 500;
 var score = roundCounter - 1;
-var baseOpacity = 0.45;
+var baseOpacity = 0.5;
+var endOpacity = 1;
 
 //record current box number (so the script can find an adjacent box)
 function setCurrentBox(number) {
@@ -91,7 +92,7 @@ function makeBoxFlash(boxNumber) {
 	var boxName = "box" + String(boxNumber);
 	var box = document.getElementById(boxName);
 	
-  	box.style.opacity = 1;
+  	box.style.opacity = endOpacity;
   	setTimeout(function() { 
 		box.style.opacity = baseOpacity;
 	
@@ -125,7 +126,7 @@ function makeClickedFlash(number) {
 	var box = document.getElementById(boxName);
 
 	if (gameStatus) {
-		box.style.opacity = 1;
+		box.style.opacity = endOpacity;
 		setTimeout(function() {
 			box.style.opacity = baseOpacity;
 		}, gameSpeed); 

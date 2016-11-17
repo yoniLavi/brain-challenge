@@ -3,31 +3,43 @@
 </div>
 <hr/>
 <br/>
-<div class="gameBox">
-	<div class="pieceLine">
-		<button type="button" class="pieceBox white" id="piece0"></button>
+<div class="boardArea">
+	<div class="boardSide">
+		<p>Target Moves</p>
+		<p></p>
 	</div>
-	<div class="pieceLine">
-		<button type="button" class="pieceBox white" id="piece1"></button>
+	<div class="boardCentre">
+		<div class="gameBox">
+			<div class="pieceLine">
+				<button type="button" class="pieceBox white" id="piece0"></button>
+			</div>
+			<div class="pieceLine">
+				<button type="button" class="pieceBox white" id="piece1"></button>
+			</div>
+			<div class="pieceLine">
+				<button type="button" class="pieceBox empty" id="piece2"></button>
+			</div>
+			<div class="pieceLine">
+				<button type="button" class="pieceBox black" id="piece3"></button>
+			</div>
+			<div class="pieceLine">
+				<button type="button" class="pieceBox black" id="piece4"></button>
+			</div>
+		</div>
+		<hr/>
+		<div id="newButton">
+			<button type="button" class="btn btn-danger" onclick="playGame()">Start Game</button>
+		</div>
+		<hr/>
+		<div id="instructions">
+			<h2>Instructions</h2>
+			<p>Swap the red and black pieces in the fewest moves possible by moving into the empty space.</p>
+			<p>You only only move a piece within 2 spaces into the empty space.</p>
+			<!--<p>Every time you successfully complete the challenge, you'll move to a bigger board.</p>-->
+		</div>
 	</div>
-	<div class="pieceLine">
-		<button type="button" class="pieceBox empty" id="piece2"></button>
-	</div>
-	<div class="pieceLine">
-		<button type="button" class="pieceBox black" id="piece3"></button>
-	</div>
-	<div class="pieceLine">
-		<button type="button" class="pieceBox black" id="piece4"></button>
-	</div>
+	<div class="boardSide"></div>
 </div>
-<hr/>
-<div id="newButton">
-	<button type="button" class="btn btn-danger" onclick="playGame()">Start Game</button>
 </div>
-<hr/>
-<div id="instructions">
-	<h2>Instructions</h2>
-	<p>Swap the black and white pieces in the fewest moves possible by moving into the empty space.</p>
-	<p>You only only move a piece within 2 spaces into the empty space.</p>
-	<p>Every time you successfully complete the challenge, you'll move to a bigger board.</p>
-</div>
+
+

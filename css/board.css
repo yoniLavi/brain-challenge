@@ -2,28 +2,36 @@
 	text-align: center;
 }
 
+.boardArea {
+	display:flex;
+}
+
+.boardSide {
+	flex:1;
+	
+}
+.boardCentre {
+	flex:3;
+	
+}
+
 .gameBox {
 	display: flex;
 	flex-direction:row;
 	justify-content: space-around;
 	margin-right:auto; 
 	margin-left:auto;
-	width:60%;
 	border-radius: 10px;
 }
 
 .pieceLine {
-	width:100px;
-	height:100px;
+	width:90px;
+	height:90px;
 	border-bottom: 1px solid black;
-}
-	
-.pieceLine:active:focus  {
-  	outline: none;
 }
 
 .pieceBox {
-	width:90%;
+	width:100%;
 	height:90%;
 	border:1px solid black;
 	margin: 0 auto;
