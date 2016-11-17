@@ -12,8 +12,21 @@
 	border-radius: 10px;
 }
 
-.pieceBox {
+.pieceLine {
 	width:100px;
 	height:100px;
+	border-bottom: 1px solid black;
+	
+}
+.pieceBox {
+	width:90%;
+	height:90%;
 	border:1px solid black;
+	margin: 0 auto;
+}
+.white {
+	background-color: white;
+}
+.black {
+	background-color: black;
 }
