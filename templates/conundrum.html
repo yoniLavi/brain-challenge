@@ -21,7 +21,11 @@
 			<div id="newButton">
 				<button type="button" class="btn btn-danger" onclick="newGame()">Get New Conundrum</button>
 			</div>
-			<br/>
+			<hr/>
+			<div id="solveBox">
+		  		<input type="text" name="solution" id="userSolve">
+		  		<button type="button" class="btn btn-danger" onclick="revealSolution(word)">Reveal Solution</button>
+			</div>
 			<br/>
 			<div class="solutionGrid">
 				<div class="letterBox" id="solution1"></div>
@@ -35,14 +39,14 @@
 				<div class="letterBox" id="solution9"></div>
 			</div>
 			<br/>
-			<div id="solveBox">
-		  		<!--<input type="text" name="solution">-->
-		  		<button type="button" class="btn btn-danger" onclick="revealSolution(word)">Reveal Solution</button>
-			</div>
+			
 		</div>
 		
 	<div class="sideArea">
-		<div id="countdownClock">00:30</div>
+		<div id="countdownClock">30</div>
+		<div>
+		<p id="checkAnswer">Answer</p>
+		</div>
 	</div>
 </div>
 <br/>

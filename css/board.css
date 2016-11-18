@@ -10,6 +10,11 @@
 	flex:1;
 	
 }
+
+.boardSide > p {
+	font-size: 20px;
+}
+
 .boardCentre {
 	flex:3;
 	

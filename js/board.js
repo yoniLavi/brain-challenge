@@ -9,6 +9,7 @@ var hoveredPiece;
 var minimumMoves;
 var status = false;
 var board = ["w","w","_","b", "b"];
+var moveCounter = 0;
 
 function playGame() {
 	resetBoard();
@@ -18,27 +19,6 @@ function playGame() {
 
 function recordEmptySpace(number) {
 	emptySpace = number;
-};
-
-function updateMovePiece(number) {
-	//on hover, update mightMovePiece
-};
-
-function addListener() {
-	//watch for hover, on hover change colour of box
-	//watch for click, on click update the emptySpace
-	//check if board is complete
-};
-
-function checkMove(emptySpace) {
-	//on hover over box, check if piece can be moved into the empty
-	//space, and then highlight the box either green or red.
-	//if hoveredPiece is within 2 of emptySpace, and is also within
-	//the bounds of the board, the move is ok
-};
-
-function calculateMinimumMoves() {
-
 };
 
 function updateStatus(board) {
@@ -95,6 +75,8 @@ function movePiece(number){
 	board[number] = "_";
 	printBoard(board);
 	updateStatus(board);
+	moveCounter++;
+	document.getElementById('yourMoves').innerHTML=String(moveCounter);
 
 };
 
@@ -165,4 +147,8 @@ function resetBoard() {
 	button4.style.background = "black";
 	button4.style.border = "1px solid black";
 	
+};
+
+function calculateMinimumMoves() {
+
 };
