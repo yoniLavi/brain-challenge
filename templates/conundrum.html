@@ -23,8 +23,10 @@
 			</div>
 			<hr/>
 			<div id="solveBox">
-		  		<input type="text" name="solution" id="userSolve">
-		  		<button type="button" class="btn btn-danger" onclick="revealSolution(word)">Reveal Solution</button>
+				<form>
+			  		<input type="text" name="solution" id="userSolve">
+			  		<input type="submit" class="btn btn-danger" onclick="revealSolution(word)" value="Reveal Solution">
+		  		</form>
 			</div>
 			<br/>
 			<div class="solutionGrid">
@@ -39,13 +41,19 @@
 				<div class="letterBox" id="solution9"></div>
 			</div>
 			<br/>
-			
 		</div>
 		
 	<div class="sideArea">
 		<div id="countdownClock">30</div>
-		<div>
-		<p id="checkAnswer">Answer</p>
+		<hr/>
+		<div id=answerArea>
+			<p id="checkAnswer"></p>
+		</div>
+		<hr/>
+		<div id="monitorScore">
+			<p id="currentScore">0</p>
+			<p>out of</p>
+			<p id="totalMoves">0</p>
 		</div>
 	</div>
 </div>
