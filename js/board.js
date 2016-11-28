@@ -3,32 +3,37 @@
 BoardSwap Scripts 
 --------------------------------------------------------------------
 -------------------------------------------------------------------*/ 
-
+//record empty space on the board
 var emptySpace = 2;
-var hoveredPiece;
+//record minimum possible moves for this board
 var minimumMoves = 8;
+//record status of board being complete
 var status = false;
+//array to record current state of the board
 var board = ["w","w","_","b", "b"];
+//record how many moves have been made
 var moveCounter = 0;
 
+//initialise the game
 function playGame() {
 	resetBoard();
 	printBoard(board);
 	watchClicks();
 };
 
+//record which space on the board is empty
 function recordEmptySpace(number) {
 	emptySpace = number;
 };
 
+//check if board is complete
 function updateStatus(board) {
+
 	var centre = Math.floor(board.length/2);
-	console.log("centre is " + centre);
+	
+	//create 
 	var firstHalf = board.slice(0, centre);
 	var secondHalf = board.slice(centre + 1, board.length);
-
-	printBoard(firstHalf);
-	printBoard(secondHalf);
 
 	if (firstHalfTrue(firstHalf) && secondHalfTrue(secondHalf)) {
 		status = true;
@@ -99,11 +104,6 @@ function changeColours(oldEmpty, newEmpty) {
 	newColour.style.border = "none";
 
 }
-
-function printBoard(board) {
-	var stringBoard = board.toString();
-	console.log(stringBoard);
-};
 
 //eventListener for clicks
 function watchClicks(){

@@ -22,7 +22,7 @@ var userSolution;
 //record if solution button has been clicked so not to double count score
 var lastClick = true;
 
-
+//initialise new game
 function newGame() {
 	lastClick = true;
 	resetClock();
@@ -32,6 +32,7 @@ function newGame() {
 	getWord();
 };
 
+//get new word for the conundrum
 function getWord() {
 	//get random word from wordList array
 	var randomWord = wordList[Math.floor(Math.random()*wordList.length)];
@@ -41,27 +42,31 @@ function getWord() {
 	insertWord(scrambled)
 };
 
+//scramble word to produce anagram
 function scrambleWord(word) {
 	
     var charIndex = 0;
+    //array of characters from the word
     wordArray = word.split("");
+    //empty array for scrambled word
     var scrambledArray = [];
     
-
+    //scramble word
     while(wordArray.length > 0) {
         charIndex = Math.floor(Math.random()*wordArray.length);
         scrambledArray += wordArray[charIndex];
         wordArray.splice(charIndex,1);
     }
 	scrambled = scrambledArray.toString();
-	console.log(scrambled);
 
 };
 
+//insert scrambled word into top boxes on the page
 function insertWord(scrambled) {
-	//insert scrambled word into top boxes on the page
+	
 	scrambledArray = scrambled.split("");
 	
+	//insert individual letters
 	for (var i=0; i<scrambledArray.length; i++) {
 
 		var letter = document.getElementById("letter" + String(i+1));
@@ -70,26 +75,30 @@ function insertWord(scrambled) {
 	}
 };
 
+//reveal the solution in the lower set of boxes on the page
 function revealSolution(word) {
+	
 	//clear the timer
 	clearTimeout(time);
-	
 
 	if (lastClick === true) {
-			//insert word into lower boxes on page
+		
+		//split word into character array
 		wordArray = word.split("");
 
+		//insert individual letters
 		for (var i=0; i<wordArray.length; i++) {
 			var letter = document.getElementById("solution" + String(i+1));
 
 			letter.innerHTML = wordArray[i].toUpperCase();
 		}
 
-
+		//check if answer is correct and update the score
 		var solution = document.getElementById('userSolve').value;
 		var correct = document.getElementById('checkAnswer');
 		var current = document.getElementById('currentScore');
 		var total = document.getElementById('totalMoves');
+		
 		if (solution.toLowerCase() === word) {
 			correct.innerHTML="CORRECT!";
 			correct.style.visibility="show";
@@ -98,14 +107,16 @@ function revealSolution(word) {
 		} else {
 			correct.innerHTML="WRONG!";
 		}
+
 		attempts += 1;
-		//console.log(attempts);
+
 		total.innerHTML=String(attempts);
 
 	}
 	lastClick = false;
 };
 
+//when restarting the game, clear the solution
 function clearSolution() {
 	for (var i=0; i<9; i++) {
 		var letter = document.getElementById("solution" + String(i+1));
@@ -116,6 +127,8 @@ function clearSolution() {
 	
 };
 
+//countdown clock functionality - reduce the time by 1 second every 
+//time this function is called
 function countdown() {
 
 	count = document.getElementById('countdownClock').innerHTML;
@@ -134,13 +147,14 @@ function countdown() {
 	time = setTimeout(countdown, 1000);
 };
 
+//reset the clock when starting new game
 function resetClock() {
 	clearTimeout(time);
 	var reset = document.getElementById('countdownClock');
 	reset.innerHTML="31";
-
 };
 
+//clear the input box after the solution is revealed
 function clearInput() {
 	var box =document.getElementById('userSolve');
 	box.value = '';
