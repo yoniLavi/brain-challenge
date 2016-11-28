@@ -3,25 +3,34 @@
 MemoryBox Scripts 
 --------------------------------------------------------------------
 -------------------------------------------------------------------*/ 
+//store current box 
+var currentBox = 0;
+//store previous box
+var previousBox = 0;
+//record box which has been clicked
+var clickedBox = 0;
+//record that the game is still in play
+var gameStatus = true;
+//array to store sequence of flashes
+var storedSequence = [];
+//array to store sequence of clicks
+var clickedSequence = [];
+//record the number of rounds
+var roundCounter = 0;
+//record the number of clicks
+var clickCounter = 0;
+//control the speed of the flashes
+var gameSpeed = 500;
+//record the score
+var score = roundCounter - 1;
+//control the brightness of the flashes
+var baseOpacity = 0.5;
+var endOpacity = 1;
 
 //return a random number to decide which box will flash
 function getRandom() {
 	return Math.floor(Math.random()*9)+1
 };
-
-var currentBox = 0;
-var previousBox = 0;
-var clickedBox = 0;
-var flashArray = [];
-var gameStatus = true;
-var storedSequence = [];
-var clickedSequence = [];
-var roundCounter = 0;
-var clickCounter = 0;
-var gameSpeed = 500;
-var score = roundCounter - 1;
-var baseOpacity = 0.5;
-var endOpacity = 1;
 
 //record current box number (so the script can find an adjacent box)
 function setCurrentBox(number) {
@@ -39,7 +48,6 @@ function pickRandomFlash() {
 	roundCounter++;
 	score++;
 	var number = getRandom();
-	//flashArray.push(currentBox);
 	setCurrentBox(number);
 	setPreviousBox(currentBox);
 	storedSequence.push(number);
@@ -86,7 +94,7 @@ function pickNextFlash(currentBox) {
 };
 
 
-//set the timeout interval for the flashing boxes
+//make individual box flash
 function makeBoxFlash(boxNumber) {
 	
 	var boxName = "box" + String(boxNumber);
@@ -100,6 +108,7 @@ function makeBoxFlash(boxNumber) {
 
 };
 
+//set the timeout interval for the flashing boxes
 function setFlashInterval(arrayIndex) {
 	if (roundCounter === 1) {
 			setTimeout(function() {
@@ -120,7 +129,7 @@ function makeSequenceFlash(rounds) {
 	}
 };
 
-
+//make a box flash after it's clicked
 function makeClickedFlash(number) {
 	var boxName = "box" + String(number);
 	var box = document.getElementById(boxName);
@@ -142,7 +151,7 @@ function startGame() {
 	monitorClicks();
 };
 
-//eventListener for clicks
+//monitor the sequence of clicked boxes
 function monitorClicks(){
 	var buttons = document.getElementsByClassName('memBox');
 
@@ -164,7 +173,7 @@ function monitorClicks(){
 	}
 };
 
-
+//compare last click and ensure it's the same box as in the stored sequence
 function compareLastClick(number) {
 	if (clickedSequence[number] !== storedSequence[number]) {
 		gameStatus = false;
@@ -178,7 +187,7 @@ function compareLastClick(number) {
 	var clickedString = printArray(clickedSequence);
 	
 };
-
+//function to be called every time there's a correct click
 function continueGame() {
 	roundCounter++;
 	score++;
@@ -190,13 +199,13 @@ function continueGame() {
 	pickNextFlash(currentBox);
 	makeSequenceFlash();
 };
-
+//test function
 function printArray(name) {
 	var converted = name.toString();
 	return converted;
 }
 
-
+//display round number
 function showRound() {
 	
 	var word = document.getElementById("roundNumber");
@@ -209,12 +218,12 @@ function showRound() {
 	}
 };
 
+//reset scoring to start a new round
 function initialiseRound() {
 
 	currentBox = 0;
 	previousBox = 0;
 	clickedBox = 0;
-	flashArray = [];
 	gameStatus = true;
 	storedSequence = [];
 	clickedSequence = [];
@@ -228,6 +237,7 @@ function initialiseRound() {
 	yourScore.innerHTML = String(0);
 }
 
+//record high score
 function recordHighScore() {
 	var wordScore = document.getElementById("recordScore");
 	
@@ -239,16 +249,13 @@ function recordHighScore() {
 	}
 };
 
+//show current score
 function showYourScore() {
 	var yourScore = document.getElementById("showScore");
 
 	yourScore.innerHTML = String(score);
 
 }
-	
-//Add sound for the buttons.
-//Add transition for Game Over.
-//Explain their mistake at the end.
 
 
  
