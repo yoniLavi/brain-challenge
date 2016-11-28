@@ -116,7 +116,7 @@ function watchClicks(){
 	    	console.log("Empty Space is " + emptySpace);
 	    	console.log("Clicked is " + number);
 
-	    	if ((number - emptySpace) < -2 || (number - emptySpace) > 2) {
+	    	if ((number - emptySpace) < -2 || (number - emptySpace) > 2 || (number == emptySpace)) {
 	    		alert("Illegal Move");
 	    		console.log("Illegal Move");
 
@@ -157,7 +157,7 @@ function resetBoard() {
 	button4.style.border = "1px solid black";
 
 	document.getElementById('yourMoves').innerHTML=String(moveCounter);
-
+	document.getElementById('textButton').innerHTML='Restart Game';
 	hideResult();
 	
 };
