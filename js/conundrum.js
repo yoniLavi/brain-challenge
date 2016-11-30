@@ -36,7 +36,7 @@ function newGame() {
 function getWord() {
 	//get random word from wordList array
 	var randomWord = wordList[Math.floor(Math.random()*wordList.length)];
-	console.log(randomWord);
+	//console.log(randomWord);
 	word = randomWord;
 	scrambleWord(word);
 	insertWord(scrambled)
@@ -85,6 +85,8 @@ function revealSolution(word) {
 	//clear the timer
 	clearTimeout(time);
 
+	//only if button has been pressed once, so as to 
+	//not double count the score
 	if (lastClick === true) {
 		
 		//split word into character array
@@ -103,6 +105,7 @@ function revealSolution(word) {
 		var current = document.getElementById('currentScore');
 		var total = document.getElementById('totalMoves');
 		
+		//show correct or wrong message
 		if (solution.toLowerCase() === word) {
 			correct.innerHTML="CORRECT!";
 			correct.style.visibility="show";
@@ -112,8 +115,8 @@ function revealSolution(word) {
 			correct.innerHTML="WRONG!";
 		}
 
+		//record attempts made and show on screen
 		attempts += 1;
-
 		total.innerHTML=String(attempts);
 
 	}
@@ -122,11 +125,14 @@ function revealSolution(word) {
 
 //when restarting the game, clear the solution
 function clearSolution() {
+
+	//loop through boxes and delete letters
 	for (var i=0; i<9; i++) {
 		var letter = document.getElementById("solution" + String(i+1));
 
 		letter.innerHTML = " ";
 	}
+	//get rid of correct or wrong from last conundrum
 	document.getElementById('checkAnswer').innerHTML="";
 	
 };
@@ -135,16 +141,18 @@ function clearSolution() {
 //time this function is called
 function countdown() {
 
+	//get count from onscreen
 	count = document.getElementById('countdownClock').innerHTML;
 	count = parseInt(count);
 
+	//if count is finished, add Time Up message and reveal solution
 	if (count == 1) {
 	  	var stopCount = document.getElementById('countdownClock');
 	  	stopCount.innerHTML = "TIME UP!";
 	  	revealSolution(word);
 	  	return;
 	}
-
+	//reduce count on screen every 1 second
 	count--;
 	temp = document.getElementById('countdownClock');
 	temp.innerHTML = count;
@@ -160,6 +168,6 @@ function resetClock() {
 
 //clear the input box after the solution is revealed
 function clearInput() {
-	var box =document.getElementById('userSolve');
+	var box = document.getElementById('userSolve');
 	box.value = '';
 };

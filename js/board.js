@@ -10,14 +10,15 @@ var minimumMoves = 8;
 //record status of board being complete
 var status = false;
 //array to record current state of the board
-var board = ["w","w","_","b", "b"];
+var board = ["r","r","_","b", "b"];
 //record how many moves have been made
 var moveCounter = 0;
+//record which colour has been moved
+var moveColour;
 
 //initialise the game
 function playGame() {
 	resetBoard();
-	//printBoard(board);
 	watchClicks();
 };
 
@@ -29,22 +30,25 @@ function recordEmptySpace(number) {
 //check if board is complete
 function updateStatus(board) {
 
+	//get centre of board to split it
 	var centre = Math.floor(board.length/2);
 	
-	//create 
+	//create two halves of the board for comparison
 	var firstHalf = board.slice(0, centre);
 	var secondHalf = board.slice(centre + 1, board.length);
 
+	//check if both halves of the board are complete
 	if (firstHalfTrue(firstHalf) && secondHalfTrue(secondHalf)) {
+		//change status to show game is finished
 		status = true;
 		showResult();
 	}
-
-	console.log("Status is " + status);
+	
 };
-
+//check if the first half of the board is the right colour
 function firstHalfTrue(board) {
 	
+	//loop through pieces and ensure they are black
 	for (var i = 0; i < board.length; i++) {
 		if (board[i] !== "b") {
 			return false;
@@ -54,10 +58,12 @@ function firstHalfTrue(board) {
 	return true;
 };
 
+//check if the second half of the board is the right colour
 function secondHalfTrue(board) {
-	var status = false;
+	
+	//loop through pieces and ensure they are red
 	for (var i = 0; i < board.length; i++) {
-		if (board[i] !== "w") {
+		if (board[i] !== "r") {
 			return false;
 			break;
 		} 
@@ -65,34 +71,43 @@ function secondHalfTrue(board) {
 	return true;
 };
 
+//update which colour piece is being moved, for use in movePiece function
 function updateMoveColour(number) {
 	moveColour = board[number];
-	console.log("Move Colour is " + moveColour);
 };
 
+//
 function movePiece(number){
 	//number is the piece to be moved
 	updateMoveColour(number);
 	
 	//swap pieces in array
 	changeColours(emptySpace, number);
+	//update empty space in array to moved colour 
 	board[emptySpace]=moveColour;
+	//update empty space number
 	emptySpace = number;
+	//update moved colour in array to empty space
 	board[number] = "_";
+	//add 1 to move counter
 	moveCounter++;
-	printBoard(board);
+	//check if board is complete
 	updateStatus(board);
+	//update move counter on the screen
 	document.getElementById('yourMoves').innerHTML=String(moveCounter);
 
 };
 
+//change the colours of the boxes on screen after a move is made
 function changeColours(oldEmpty, newEmpty) {
+	//get ids of the old and new empty space
 	var oldName = "piece" + oldEmpty;
 	var newName = "piece" + newEmpty;
 
 	var oldColour = document.getElementById(oldName);
 	var newColour = document.getElementById(newName);
 
+	//check which colour has been moved, and update the old empty space to the new colour
 	if (moveColour==="b") {
 		oldColour.style.background = "black";
 	} else {
@@ -100,6 +115,7 @@ function changeColours(oldEmpty, newEmpty) {
 		oldColour.style.border = "1px solid black";
 	}
 
+	//change the moved piece to the empty space colour (white background)
 	newColour.style.background = "white";
 	newColour.style.border = "none";
 
@@ -109,33 +125,36 @@ function changeColours(oldEmpty, newEmpty) {
 function watchClicks(){
 	var buttons = document.getElementsByClassName('pieceBox');
 
+	//loop to add listener to all boxes
 	for (var i = 0; i < buttons.length; i++){
 	    buttons[i].onclick = function(){ 
-	    	
+	    	//get the last digit of the id of the box that is clicked
 	    	var number = parseInt(this.id.slice(-1));
-	    	console.log("Empty Space is " + emptySpace);
-	    	console.log("Clicked is " + number);
 
+	    	//ensure that only boxes within 2 spaces of the empty space are clicked, and not the empty space itself
 	    	if ((number - emptySpace) < -2 || (number - emptySpace) > 2 || (number == emptySpace)) {
 	    		alert("Illegal Move");
-	    		console.log("Illegal Move");
 
 	    	} else {
 
 	    		movePiece(number);
-	    		console.log("Empty Space is " + emptySpace);
 	
 	    	}
 	    }
 	}
 };
-
+//reset the board after the game is started
 function resetBoard() {
-	board = ["w","w","_","b", "b"];
+	//return board to starting position
+	board = ["r","r","_","b", "b"];
+	//reset completion status
 	status = false;
+	//reset empty space
 	emptySpace = 2;
+	//reset move counter
 	moveCounter = 0;
 	
+	//change box colours back to starting positions
 	var button0 = document.getElementById('piece0');
 	button0.style.background = "rgb(193,28,28)";
 	button0.style.border = "1px solid black";
@@ -156,16 +175,20 @@ function resetBoard() {
 	button4.style.background = "black";
 	button4.style.border = "1px solid black";
 
+	//reset move counter
 	document.getElementById('yourMoves').innerHTML=String(moveCounter);
+	//change text of start button
 	document.getElementById('textButton').innerHTML='Restart Game';
 	hideResult();
 	
 };
 
+//after board is complete, show whether it was completed in the minimum moves
 function showResult() {
+	
 	var result = document.getElementById('boardResult');
-	console.log("moves is " + moveCounter);
-	console.log("minimum moves is " + minimumMoves);
+
+	//check if completed in the minimum moves, and print the relevant message
 	if (moveCounter === minimumMoves) {
 		result.innerHTML = "Congratulations, you completed the game in the minimum moves!";
 	} else {
@@ -173,20 +196,14 @@ function showResult() {
 	}
 
 }
-
+//hide the above result at the start of a new game
 function hideResult() {
 	var result = document.getElementById('boardResult');
 	result.innerHTML = "";
 }
 
-function printBoard(board) {
-
-}
-
+//function to be used when game is expanded to bigger boards
 function calculateMinimumMoves() {
 
 };
 
-//start at board size 3 and increase
-//add cookies to record all high scores
-//work on login and account page
