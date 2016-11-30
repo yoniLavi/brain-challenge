@@ -59,6 +59,10 @@ function scrambleWord(word) {
     }
 	scrambled = scrambledArray.toString();
 
+	if (scrambled === word) {
+		scrambleWord(word);
+	}
+
 };
 
 //insert scrambled word into top boxes on the page
