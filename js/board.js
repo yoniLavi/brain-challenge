@@ -17,7 +17,7 @@ var moveCounter = 0;
 //initialise the game
 function playGame() {
 	resetBoard();
-	printBoard(board);
+	//printBoard(board);
 	watchClicks();
 };
 
@@ -177,6 +177,10 @@ function showResult() {
 function hideResult() {
 	var result = document.getElementById('boardResult');
 	result.innerHTML = "";
+}
+
+function printBoard(board) {
+
 }
 
 function calculateMinimumMoves() {
