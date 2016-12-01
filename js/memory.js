@@ -26,6 +26,7 @@ var score = roundCounter - 1;
 //control the brightness of the flashes
 var baseOpacity = 0.5;
 var endOpacity = 1;
+var myFlash;
 
 //return a random number to decide which box will flash
 function getRandom() {
@@ -137,7 +138,6 @@ function setFlashInterval(arrayIndex) {
 			makeBoxFlash(storedSequence[arrayIndex]);
 		}, arrayIndex*gameSpeed + (2*gameSpeed))
 	}
-	
 };
 
 //make multiple boxes flash in sequence
@@ -146,7 +146,6 @@ function makeSequenceFlash(rounds) {
 	for (var i=0; i<storedSequence.length; i++) {
 		
 		setFlashInterval(i);
-
 		
 	}
 };
@@ -212,6 +211,8 @@ function compareLastClick(number) {
 	//if last click isn't what it should be in the sequence, game is over
 	if (clickedSequence[number] !== storedSequence[number]) {
 		gameStatus = false;
+		//am trying to stop the flashing when game is over, but can't figure out which timeout to clear
+		clearTimeout(myFlash);
 		console.log("Game Over");
 		showRound();
 		recordHighScore();
