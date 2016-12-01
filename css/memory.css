@@ -11,9 +11,6 @@
     
     padding:20px;
 }
-#leftPanel {
-    
-}
 
 .gamePanel {
     flex:3;
@@ -71,11 +68,77 @@
 }
 
 /* Mobile screen styling */
+@media screen and (max-width: 480px){   
+    
+    .boardArea {
+        display:flex;
+        flex-direction: column;
+    }
+
+    .side1 {
+        order:3;
+    }
+
+    .area2 {
+        order:2;
+    }
+    .centreArea {
+        order:1;
+    }
+
+    .pieceLine {
+        width:65px;
+        height:65px;
+    }
+
+    
+}     
+
+@media screen and (min-width: 481px) and (max-width: 768px){   
+    .boardArea {
+        display:flex;
+        flex-direction: column;
+    }
+
+    .side1 {
+        order:3;
+    }
+
+    .area2 {
+        order:2;
+    }
+    .centreArea {
+        order:1;
+    }
+
+    .pieceLine {
+        width:80px;
+        height:80px;
+        
+    }
+} 
+
+/* Mobile screen styling */
 @media screen and (max-width: 768px){   
               
    body{
        padding-top: 220px;
    }
+
+   .gameContainer {
+        display:flex;
+        flex-direction:column;
+    }
+    .leftPanel {
+        order:3;
+    }
+
+    .rightPanel {
+        order:2;
+    }
+    .gamePanel {
+        order:1;
+    }
 
     .memBox {
         height:75px;

@@ -4,7 +4,7 @@
 <hr/>
 <br/>
 <div class="gameContainer">
-	<div class="sidePanel" id="leftPanel">
+	<div class="sidePanel leftPanel">
 		<div id="instructions">
 			<h2>Instructions</h2>
 			<p>Copy the sequence by clicking on the coloured boxes in the same order you're shown.</p>
@@ -13,17 +13,23 @@
 		</div>
 	</div>
 	<div class="gamePanel">
-		<button type="button" class="memBox" id="box1"></button>
-		<button type="button" class="memBox" id="box2"></button>
-		<button type="button" class="memBox" id="box3"></button>
-		<button type="button" class="memBox" id="box4"></button>
-		<button type="button" class="memBox" id="box5"></button>
-		<button type="button" class="memBox" id="box6"></button>
-		<button type="button" class="memBox" id="box7"></button>
-		<button type="button" class="memBox" id="box8"></button>
-		<button type="button" class="memBox" id="box9"></button>
+		<div id="gamePlay">
+			<button type="button" class="memBox" id="box1"></button>
+			<button type="button" class="memBox" id="box2"></button>
+			<button type="button" class="memBox" id="box3"></button>
+			<button type="button" class="memBox" id="box4"></button>
+			<button type="button" class="memBox" id="box5"></button>
+			<button type="button" class="memBox" id="box6"></button>
+			<button type="button" class="memBox" id="box7"></button>
+			<button type="button" class="memBox" id="box8"></button>
+			<button type="button" class="memBox" id="box9"></button>
+		</div>
+		<br/>
+		<div id="startButton">
+			<button type="button" class="btn btn-danger" onclick="startGame()">Start</button>
+		</div>
 	</div>
-	<div class="sidePanel">
+	<div class="sidePanel rightPanel">
 		<div>
 			<h2 id="roundNumber">Round 1</h2>
 		</div>
@@ -36,10 +42,6 @@
 			<p id="recordScore">0</p>
 		</div>
 	</div>
-</div>
-<br/>
-<div id="startButton">
-	<button type="button" class="btn btn-danger" onclick="startGame()">Start</button>
 </div>
 <br/>
 <hr/>
