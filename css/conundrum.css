@@ -13,6 +13,7 @@
 }
 
 
+
 .conundrumGrid, .solutionGrid {
 	display: flex;
 	flex-direction:row;
@@ -24,6 +25,7 @@
 
 .centreArea {
 	flex:3;
+
 	
 }
 
@@ -68,3 +70,55 @@
 	height:40px;
 	padding-top: 10px;
 }
+
+/* Mobile screen styling */
+@media screen and (max-width: 480px){   
+
+    .letterBox {
+        width:30px;
+        height:30px;
+        font-size:20px;
+    }
+
+    .area1 {
+		order:3;
+	}
+
+	.area2 {
+		order:2;
+	}
+	.centreArea {
+		order:1;
+	}
+
+	.mainArea {
+		
+		flex-direction: column;
+	}
+}     
+
+@media screen and (min-width: 481px) and (max-width: 768px){   
+	.letterBox {
+        width:50px;
+        height:50px;
+        font-size:30px;
+    }
+    .mainArea {
+		display:flex;
+		flex-direction: column;
+	}
+	.area1 {
+		order:3;
+	}
+
+	.area2 {
+		order:2;
+	}
+	.centreArea {
+		order:1;
+	}
+}     
+
+   
+
+  
