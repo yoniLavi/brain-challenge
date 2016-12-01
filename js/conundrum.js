@@ -21,15 +21,22 @@ var attempts = 0;
 var userSolution;
 //record if solution button has been clicked so not to double count score
 var lastClick = true;
+//record if start button has been clicked to not allow new word to appear without counting score
+var startClick = false;
 
 //initialise new game
 function newGame() {
-	lastClick = true;
-	resetClock();
-	clearInput();
-	countdown();
-	clearSolution();
-	getWord();
+	
+	if (startClick == false) {
+		startClick = true
+		lastClick = true;
+		resetClock();
+		clearInput();
+		countdown();
+		clearSolution();
+		getWord();
+	}
+	
 };
 
 //get new word for the conundrum
@@ -121,6 +128,7 @@ function revealSolution(word) {
 
 	}
 	lastClick = false;
+	startClick = false;
 };
 
 //when restarting the game, clear the solution
