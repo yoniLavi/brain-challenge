@@ -144,7 +144,10 @@ function setFlashInterval(arrayIndex) {
 function makeSequenceFlash(rounds) {
 	//loop through array and make each box flash in turn
 	for (var i=0; i<storedSequence.length; i++) {
+		
 		setFlashInterval(i);
+
+		
 	}
 };
 

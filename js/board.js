@@ -16,6 +16,7 @@ var moveCounter = 0;
 //record which colour has been moved
 var moveColour;
 
+
 //initialise the game
 function playGame() {
 	resetBoard();

@@ -12,23 +12,31 @@
 		<p id="yourMoves">0</p>
 	</div>
 	<div class="boardCentre">
-		<div class="gameBox">
-			<div class="pieceLine">
-				<button type="button" class="pieceBox white" id="piece0"></button>
+		<div class = "arrowsAndGame">
+			<div class="arrowContainer">
+				<div id="arrow1"><i class="fa fa-chevron-circle-left"></i></div>
+				<div id="arrow2"><i class="fa fa-chevron-circle-right"></i></div>
 			</div>
-			<div class="pieceLine">
-				<button type="button" class="pieceBox white" id="piece1"></button>
-			</div>
-			<div class="pieceLine">
-				<button type="button" class="pieceBox empty" id="piece2"></button>
-			</div>
-			<div class="pieceLine">
-				<button type="button" class="pieceBox black" id="piece3"></button>
-			</div>
-			<div class="pieceLine">
-				<button type="button" class="pieceBox black" id="piece4"></button>
+			<br/>
+			<div class="gameBox">
+				<div class="pieceLine">
+					<button type="button" class="pieceBox red" id="piece0"></button>
+				</div>
+				<div class="pieceLine">
+					<button type="button" class="pieceBox red" id="piece1"></button>
+				</div>
+				<div class="pieceLine">
+					<button type="button" class="pieceBox empty" id="piece2"></button>
+				</div>
+				<div class="pieceLine">
+					<button type="button" class="pieceBox black" id="piece3"></button>
+				</div>
+				<div class="pieceLine">
+					<button type="button" class="pieceBox black" id="piece4"></button>
+				</div>
 			</div>
 		</div>
+		
 		<hr/>
 		<div id="newButton">
 			<button id="textButton" type="button" class="btn btn-danger" onclick="playGame()">Start Game</button>

@@ -20,6 +20,25 @@
 	flex:3;
 	
 }
+.arrowContainer {
+	display:flex;
+	flex-direction:row;
+	justify-content: space-between;
+	padding-left: 25px;
+	padding-right: 25px;
+}
+#arrow1 {
+	
+	color:black;
+	font-size: 300%;
+	
+}
+
+#arrow2 {
+	
+	color: rgb(193,28,28);
+	font-size: 300%;
+}
 
 .gameBox {
 	display: flex;
@@ -28,6 +47,7 @@
 	margin-right:auto; 
 	margin-left:auto;
 	border-radius: 10px;
+
 }
 
 .pieceLine {
@@ -42,7 +62,7 @@
 	border:1px solid black;
 	margin: 0 auto;
 }
-.white {
+.red {
 	background-color: rgb(193,28,28);
 }
 .black {
