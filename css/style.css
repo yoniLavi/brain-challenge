@@ -2,6 +2,11 @@ body {
     padding-top: 60px;
 }
 
+p {
+    font-family: 'Lato';
+    font-size:18px;
+}
+
 .navbar {
 	background-color: rgb(235,25,26);
 	border: none;
