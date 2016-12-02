@@ -24,12 +24,17 @@
 	        <div class="container">
 	            <div class="navbar-header">
 	                <a class="navbar-brand" href="#/">Brain Challenge</a>
+	                <button type="button" class="navbar-toggle collapsed" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">
+	                	<span class="icon-bar"></span>
+           				<span class="icon-bar"></span>
+           				<span class="icon-bar"></span>
+	                </button>
 	            </div>
-	            <ul class="nav navbar-nav navbar-right">
-	                <li><a href="#/memorybox">MemoryBox</a></li>
-	                <li><a href="#/conundrum">Conundrum</a></li>
-	                <li><a href="#/boardswap">BoardSwap</a></li>
-	                <li><a href="#/accounts/register">Account</a></li>
+	            <ul id="collapsingList" class="nav navbar-nav navbar-right navbar-collapse" ng-class="{collapse: isCollapsed}">
+	                <li><a href="#/memorybox" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">MemoryBox</a></li>
+	                <li><a href="#/conundrum" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">Conundrum</a></li>
+	                <li><a href="#/boardswap" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">BoardSwap</a></li>
+	                <li><a href="#/accounts/register" ng-init="isCollapsed = true" ng-click="isCollapsed = !isCollapsed">Account</a></li>
 	            </ul>
 	        </div>
 	    </nav>
