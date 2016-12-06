@@ -10,15 +10,15 @@ angular.module('RouteControllers', [])
     .controller('MemoryController', function($scope) {
        
         $scope.scoreBox = "Memory Score";
-        $scope.instructions = "";
+        
     })
     .controller('ConundrumController', function($scope) {
         
         $scope.scoreBox = "Conundrum Score";
-        $scope.instructions = "";
+        
     })
     .controller('BoardController', function($scope) {
        
         $scope.scoreBox = "BoardSwap Score"; 
-        $scope.instructions = "";
+        
     });

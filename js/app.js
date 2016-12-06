@@ -1,5 +1,6 @@
 var myApp = angular.module('BrainApp', ['ngRoute', 'RouteControllers', 'ui.bootstrap', 'ngSanitize'])
-    
+var myController;
+
 //controller for modal
 myApp.controller('demoController', function($uibModal) {
     this.uibModal = function() {
@@ -39,8 +40,15 @@ myApp.config(function($routeProvider) {
     });
 });
 
-myApp.run(['$rootScope', function($rootScope) {
+myApp.run(['$rootScope', function($rootScope, $location) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
+        if (current.$$route.title == 'memorybox') {
+            myController = 'MemoryController';
+        } else if (current.$$route.title == 'conundrum') {
+            myController = 'ConundrumController';
+        } else if (current.$$route.title == 'boardSwap') {
+            myController = 'BoardController';
+        }
     });
 }]);
