@@ -1,4 +1,14 @@
-angular.module('BrainApp', ['ngRoute', 'RouteControllers']);
+angular.module('BrainApp', ['ngRoute', 'RouteControllers', 'ui.bootstrap'])
+    
+    //controller for modal
+    .controller('demoController', function($uibModal) {
+        this.uibModal = function() {
+            var uibModalInstance = $uibModal.open({
+                controller: 'ModalController',
+                templateUrl: 'modal.html'
+            })
+        }
+    });
  
 angular.module('BrainApp').config(function($routeProvider) {
  
