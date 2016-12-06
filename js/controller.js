@@ -1,6 +1,6 @@
 angular.module('RouteControllers', [])
     .controller('HomeController', function($scope) {
-        $scope.title = "Welcome To Brain Challenge - Brainiacs' Heaven!";
+        
     })
     .controller('ModalController', function($scope, $uibModalInstance) {
         $scope.goback = function() {
@@ -8,11 +8,17 @@ angular.module('RouteControllers', [])
         }
     })
     .controller('MemoryController', function($scope) {
-        $scope.title = "MemoryBox";
+       
+        $scope.scoreBox = "Memory Score";
+        $scope.instructions = "";
     })
     .controller('ConundrumController', function($scope) {
-        $scope.title = "Conundrum";
+        
+        $scope.scoreBox = "Conundrum Score";
+        $scope.instructions = "";
     })
     .controller('BoardController', function($scope) {
-        $scope.title = "BoardSwap";
+       
+        $scope.scoreBox = "BoardSwap Score"; 
+        $scope.instructions = "";
     });
