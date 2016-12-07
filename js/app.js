@@ -1,8 +1,7 @@
 var myApp = angular.module('BrainApp', ['ngRoute', 'RouteControllers', 'ui.bootstrap', 'ngSanitize'])
-var myController;
 
 //controller for modal
-myApp.controller('demoController', function($uibModal) {
+myApp.controller('demoController', function($scope, $uibModal) {
     this.uibModal = function() {
         var uibModalInstance = $uibModal.open({
             controller: 'ModalController',
