@@ -1,63 +1,66 @@
-<div class="topLine">
-			<div class="subtop"></div>
+<div>
+	<div class="topLine">
+		<div class="subtop"></div>
 			<div class="subtop scoreBox"><p>Score</p></div> <!--ng-bind-html="scoreBox" ng-controller='BoardController'-->
 			<div class="subtop attempts"><p></p></div>
 			<div class="subtop instructions">
-		<!--test open modal box for instructions-->
+			<!--test open modal box for instructions-->
 			<button class="btn btn-danger" ng-click="demo.uibModal()">Instructions</button>
 		</div>
 			<div class="subtop"></div>
-		</div>
-<div class="boardArea">
-	<div class="boardSide side1">
-		<!--<p>Target Moves</p>
-		<p>8</p>
-		<br/>
-		<p>Your Moves</p>
-		<p id="yourMoves">0</p>-->
 	</div>
-	<div class="boardCentre">
-		<div class = "arrowsAndGame">
-			<div class="arrowContainer">
-				<div id="arrow1"><i class="fa fa-chevron-circle-left"></i></div>
-				<div id="arrow2"><i class="fa fa-chevron-circle-right"></i></div>
-			</div>
+
+	<div class="boardArea">
+		<div class="boardSide side1">
+			<!--<p>Target Moves</p>
+			<p>8</p>
 			<br/>
-			<div class="gameBox">
-				<div class="pieceLine">
-					<button type="button" class="pieceBox red" id="piece0"></button>
+			<p>Your Moves</p>
+			<p id="yourMoves">0</p>-->
+		</div>
+		<div class="boardCentre">
+			<div class = "arrowsAndGame">
+				<div class="arrowContainer">
+					<div id="arrow1"><i class="fa fa-chevron-circle-left"></i></div>
+					<div id="arrow2"><i class="fa fa-chevron-circle-right"></i></div>
 				</div>
-				<div class="pieceLine">
-					<button type="button" class="pieceBox red" id="piece1"></button>
-				</div>
-				<div class="pieceLine">
-					<button type="button" class="pieceBox empty" id="piece2"></button>
-				</div>
-				<div class="pieceLine">
-					<button type="button" class="pieceBox black" id="piece3"></button>
-				</div>
-				<div class="pieceLine">
-					<button type="button" class="pieceBox black" id="piece4"></button>
+				<br/>
+				<div class="gameBox">
+					<div class="pieceLine">
+						<button type="button" class="pieceBox red" id="piece0"></button>
+					</div>
+					<div class="pieceLine">
+						<button type="button" class="pieceBox red" id="piece1"></button>
+					</div>
+					<div class="pieceLine">
+						<button type="button" class="pieceBox empty" id="piece2"></button>
+					</div>
+					<div class="pieceLine">
+						<button type="button" class="pieceBox black" id="piece3"></button>
+					</div>
+					<div class="pieceLine">
+						<button type="button" class="pieceBox black" id="piece4"></button>
+					</div>
 				</div>
 			</div>
+			
+			<hr/>
+			<div id="newButton">
+				<button id="textButton" type="button" class="btn btn-danger" onclick="playGame()">Start Game</button>
+			</div>
+			<hr/>
+			<div id="instructions">
+				<!--<h2>Instructions</h2>
+				<p>Swap the red and black pieces in the fewest moves possible by moving into the empty space.</p>
+				<p>You can only move a piece within 2 spaces into the empty space.</p>
+				<p>Every time you successfully complete the challenge, you'll move to a bigger board.</p>-->
+			</div>
 		</div>
-		
-		<hr/>
-		<div id="newButton">
-			<button id="textButton" type="button" class="btn btn-danger" onclick="playGame()">Start Game</button>
-		</div>
-		<hr/>
-		<div id="instructions">
-			<!--<h2>Instructions</h2>
-			<p>Swap the red and black pieces in the fewest moves possible by moving into the empty space.</p>
-			<p>You can only move a piece within 2 spaces into the empty space.</p>
-			<p>Every time you successfully complete the challenge, you'll move to a bigger board.</p>-->
+		<div class="boardSide side2">
+			<p id="boardResult"></p>
 		</div>
 	</div>
-	<div class="boardSide side2">
-		<p id="boardResult"></p>
-	</div>
 </div>
-</div>
+
 
 
