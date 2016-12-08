@@ -1,68 +1,71 @@
-<div class="topLine">
-			<div class="scoreBox"><p ng-bind-html="scoreBox" ng-controller='ConundrumController'></p></div>
-			<div class="instructions"><p ng-bind-html="instructions"></p></div>
+<div ng-controller="demo2Controller as demo2">	
+	<div class="topLine">
+		<div class="subtop"></div>
+		<div class="subtop scoreBox"><p></p></div> 
+		<div class="subtop attempts"><p></p></div>
+		<div class="subtop instructions">
+		<!--test open modal box for instructions-->
+			<button class="btn btn-danger" ng-click="demo2.uibModal()">Instructions</button>
 		</div>
-
-<div class="mainArea">
-	<div class="sideArea area1">
-		<div id="instruction">
-			<h2>Instructions</h2>
-			<p>You have 30 seconds to solve the conundrum to make a real word.</p>
-			<p>Type your answer in the box before time is up!</p>
-		</div>
+		<div class="subtop"></div>
 	</div>
-		<div class="centreArea">
-			<div class="conundrumGrid">
-				<div class="letterBox" id="letter1">C</div>
-				<div class="letterBox" id="letter2">O</div>
-				<div class="letterBox" id="letter3">N</div>
-				<div class="letterBox" id="letter4">U</div>
-				<div class="letterBox" id="letter5">N</div>
-				<div class="letterBox" id="letter6">D</div>
-				<div class="letterBox" id="letter7">R</div>
-				<div class="letterBox" id="letter8">U</div>
-				<div class="letterBox" id="letter9">M</div>
+
+	<div class="mainArea">
+		<div class="sideArea area1">
+			<div></div>
+		</div>
+			<div class="centreArea">
+				<div class="conundrumGrid">
+					<div class="letterBox" id="letter1">C</div>
+					<div class="letterBox" id="letter2">O</div>
+					<div class="letterBox" id="letter3">N</div>
+					<div class="letterBox" id="letter4">U</div>
+					<div class="letterBox" id="letter5">N</div>
+					<div class="letterBox" id="letter6">D</div>
+					<div class="letterBox" id="letter7">R</div>
+					<div class="letterBox" id="letter8">U</div>
+					<div class="letterBox" id="letter9">M</div>
+				</div>
+				<br/>
+				<div id="newButton">
+					<button type="button" class="btn btn-danger" onclick="newGame()">Get New Conundrum</button>
+				</div>
+				<hr/>
+				<div id="solveBox">
+					<form>
+				  		<input type="text" name="solution" id="userSolve">
+				  		<input type="submit" class="btn btn-danger" onclick="revealSolution(word)" value="Reveal Solution">
+			  		</form>
+				</div>
+				<br/>
+				<div class="solutionGrid">
+					<div class="letterBox" id="solution1"></div>
+					<div class="letterBox" id="solution2"></div>
+					<div class="letterBox" id="solution3"></div>
+					<div class="letterBox" id="solution4"></div>
+					<div class="letterBox" id="solution5"></div>
+					<div class="letterBox" id="solution6"></div>
+					<div class="letterBox" id="solution7"></div>
+					<div class="letterBox" id="solution8"></div>
+					<div class="letterBox" id="solution9"></div>
+				</div>
+				<br/>
 			</div>
-			<br/>
-			<div id="newButton">
-				<button type="button" class="btn btn-danger" onclick="newGame()">Get New Conundrum</button>
+			
+		<div class="sideArea area2">
+			<div id="countdownClock">30</div>
+			<hr/>
+			<div id=answerArea>
+				<p id="checkAnswer"></p>
 			</div>
 			<hr/>
-			<div id="solveBox">
-				<form>
-			  		<input type="text" name="solution" id="userSolve">
-			  		<input type="submit" class="btn btn-danger" onclick="revealSolution(word)" value="Reveal Solution">
-		  		</form>
+			<div id="monitorScore">
+				<p id="currentScore">0</p>
+				<p>out of</p>
+				<p id="totalMoves">0</p>
 			</div>
-			<br/>
-			<div class="solutionGrid">
-				<div class="letterBox" id="solution1"></div>
-				<div class="letterBox" id="solution2"></div>
-				<div class="letterBox" id="solution3"></div>
-				<div class="letterBox" id="solution4"></div>
-				<div class="letterBox" id="solution5"></div>
-				<div class="letterBox" id="solution6"></div>
-				<div class="letterBox" id="solution7"></div>
-				<div class="letterBox" id="solution8"></div>
-				<div class="letterBox" id="solution9"></div>
-			</div>
-			<br/>
-		</div>
-		
-	<div class="sideArea area2">
-		<div id="countdownClock">30</div>
-		<hr/>
-		<div id=answerArea>
-			<p id="checkAnswer"></p>
-		</div>
-		<hr/>
-		<div id="monitorScore">
-			<p id="currentScore">0</p>
-			<p>out of</p>
-			<p id="totalMoves">0</p>
 		</div>
 	</div>
+	<br/>
+	<hr/>
 </div>
-<br/>
-<hr/>
-

@@ -1,15 +1,36 @@
 var myApp = angular.module('BrainApp', ['ngRoute', 'RouteControllers', 'ui.bootstrap', 'ngSanitize'])
 
-//controller for modal
-myApp.controller('demoController', function($scope, $uibModal) {
+/* controllers to pass the game instructions a modal box.
+*  I suspect this could be done in a much cleaner way that wouldn't 
+*  necessitate 3 separate templates
+*/
+myApp.controller('demo1Controller', function($scope, $uibModal) {
     this.uibModal = function() {
         var uibModalInstance = $uibModal.open({
             controller: 'ModalController',
-            templateUrl: 'templates/modal.html'
+            templateUrl: 'templates/modal1.html'
         })
     }
 });
- 
+
+myApp.controller('demo2Controller', function($scope, $uibModal) {
+    this.uibModal = function() {
+        var uibModalInstance = $uibModal.open({
+            controller: 'ModalController',
+            templateUrl: 'templates/modal2.html'
+        })
+    }
+});
+
+myApp.controller('demo3Controller', function($scope, $uibModal) {
+    this.uibModal = function() {
+        var uibModalInstance = $uibModal.open({
+            controller: 'ModalController',
+            templateUrl: 'templates/modal3.html'
+        })
+    }
+});
+// routing configuration
 myApp.config(function($routeProvider) {
  
     $routeProvider.when('/', {
@@ -39,15 +60,9 @@ myApp.config(function($routeProvider) {
     });
 });
 
+// show route title on each page
 myApp.run(['$rootScope', function($rootScope, $location) {
     $rootScope.$on('$routeChangeSuccess', function (event, current, previous) {
         $rootScope.title = current.$$route.title;
-        if (current.$$route.title == 'memorybox') {
-            myController = 'MemoryController';
-        } else if (current.$$route.title == 'conundrum') {
-            myController = 'ConundrumController';
-        } else if (current.$$route.title == 'boardSwap') {
-            myController = 'BoardController';
-        }
     });
 }]);

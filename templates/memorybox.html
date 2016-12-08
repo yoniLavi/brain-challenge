@@ -1,45 +1,49 @@
-<div class="topLine">
-			<div class="scoreBox"><p ng-bind-html="scoreBox" ng-controller='MemoryController'></p></div>
-			<div class="instructions"><p ng-bind-html="instructions"></p></div>
+<div ng-controller="demo1Controller as demo1">		
+	<div class="topLine">
+		<div class="subtop"></div>
+		<div class="subtop scoreBox"><p></p></div> 
+		<div class="subtop attempts"><p></p></div>
+		<div class="subtop instructions">
+			<!--modal box for instructions-->
+			<button class="btn btn-danger" ng-click="demo1.uibModal()">Instructions</button>
 		</div>
-<div class="gameContainer">
-	<div class="sidePanel leftPanel">
-		<div id="instructions">
-
-		<!--test open modal box for instructions-->
-			<button class="btn btn-primary" ng-click="demo.uibModal()">Instructions</button>
+		<div class="subtop"></div>
+	</div>
+	<div class="gameContainer">
+		<div class="sidePanel leftPanel">
+			<div></div>
+		</div>
+		<div class="gamePanel">
+			<div id="gamePlay">
+				<button type="button" class="memBox" id="box1"></button>
+				<button type="button" class="memBox" id="box2"></button>
+				<button type="button" class="memBox" id="box3"></button>
+				<button type="button" class="memBox" id="box4"></button>
+				<button type="button" class="memBox" id="box5"></button>
+				<button type="button" class="memBox" id="box6"></button>
+				<button type="button" class="memBox" id="box7"></button>
+				<button type="button" class="memBox" id="box8"></button>
+				<button type="button" class="memBox" id="box9"></button>
+			</div>
+			<br/>
+			<div id="startButton">
+				<button type="button" class="btn btn-danger" onclick="startGame()">Start</button>
+			</div>
+		</div>
+		<div class="sidePanel rightPanel">
+			<div>
+				<h2 id="roundNumber">Round 1</h2>
+			</div>
+			<div id="yourScore">
+				<h2>Your Score</h2>
+				<p id="showScore">0</p>
+			</div>
+			<div id="highScore">
+				<h2>High Score</h2>
+				<p id="recordScore">0</p>
+			</div>
 		</div>
 	</div>
-	<div class="gamePanel">
-		<div id="gamePlay">
-			<button type="button" class="memBox" id="box1"></button>
-			<button type="button" class="memBox" id="box2"></button>
-			<button type="button" class="memBox" id="box3"></button>
-			<button type="button" class="memBox" id="box4"></button>
-			<button type="button" class="memBox" id="box5"></button>
-			<button type="button" class="memBox" id="box6"></button>
-			<button type="button" class="memBox" id="box7"></button>
-			<button type="button" class="memBox" id="box8"></button>
-			<button type="button" class="memBox" id="box9"></button>
-		</div>
-		<br/>
-		<div id="startButton">
-			<button type="button" class="btn btn-danger" onclick="startGame()">Start</button>
-		</div>
-	</div>
-	<div class="sidePanel rightPanel">
-		<div>
-			<h2 id="roundNumber">Round 1</h2>
-		</div>
-		<div id="yourScore">
-			<h2>Your Score</h2>
-			<p id="showScore">0</p>
-		</div>
-		<div id="highScore">
-			<h2>High Score</h2>
-			<p id="recordScore">0</p>
-		</div>
-	</div>
+	<br/>
+	<hr/>
 </div>
-<br/>
-<hr/>
