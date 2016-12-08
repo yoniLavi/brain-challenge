@@ -1,8 +1,8 @@
 <div ng-controller="demo1Controller as demo1">		
 	<div class="topLine">
 		<div class="subtop"></div>
-		<div class="subtop scoreBox"><p></p></div> 
-		<div class="subtop attempts"><p></p></div>
+		<div class="subtop scoreBox"><p>Your Score: <span id="showScore">0</span></p></div> 
+		<div class="subtop attempts"><p>High Score: <span id="recordScore">0</span></p></div>
 		<div class="subtop instructions">
 			<!--modal box for instructions-->
 			<button class="btn btn-danger" ng-click="demo1.uibModal()">Instructions</button>
@@ -34,14 +34,14 @@
 			<div>
 				<h2 id="roundNumber">Round 1</h2>
 			</div>
-			<div id="yourScore">
+			<!--<div id="yourScore">
 				<h2>Your Score</h2>
 				<p id="showScore">0</p>
 			</div>
 			<div id="highScore">
 				<h2>High Score</h2>
 				<p id="recordScore">0</p>
-			</div>
+			</div>-->
 		</div>
 	</div>
 	<br/>
