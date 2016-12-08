@@ -122,12 +122,13 @@
 @media screen and (max-width: 768px){   
               
    body{
-       padding-top: 70px;
+       padding-top: 60px;
    }
 
    .gameContainer {
         display:flex;
         flex-direction:column;
+        margin-top:30px;
     }
     .leftPanel {
         order:3;
