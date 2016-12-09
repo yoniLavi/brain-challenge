@@ -1,11 +1,11 @@
-<div ng-controller="demo3Controller as demo3">
+<div>
 	<div class="topLine">
 		<div class="subtop"></div>
-			<div class="subtop scoreBox"><p>Target Moves: 8</p></div> 
+			<div class="subtop scoreBox"><p>Target Moves: 8</p></div>
 			<div class="subtop attempts"><p>Your Moves: <span id="yourMoves">0</span></p></div>
 			<div class="subtop instructions">
 			<!--test open modal box for instructions-->
-			<button class="btn btn-danger" ng-click="demo3.uibModal()">Instructions</button>
+			<button class="btn btn-danger" ng-click="openInstructionsModal()">Instructions</button>
 		</div>
 			<div class="subtop"></div>
 	</div>
@@ -43,7 +43,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<hr/>
 			<div id="newButton">
 				<button id="textButton" type="button" class="btn btn-danger" onclick="playGame()">Start Game</button>

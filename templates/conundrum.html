@@ -1,11 +1,11 @@
-<div ng-controller="demo2Controller as demo2">	
+<div>
 	<div class="topLine">
 		<div class="subtop"></div>
-		<div class="subtop scoreBox"><p></p></div> 
+		<div class="subtop scoreBox"><p></p></div>
 		<div class="subtop attempts"><p></p></div>
 		<div class="subtop instructions">
 		<!--test open modal box for instructions-->
-			<button class="btn btn-danger" ng-click="demo2.uibModal()">Instructions</button>
+			<button class="btn btn-danger" ng-click="openInstructionsModal()">Instructions</button>
 		</div>
 		<div class="subtop"></div>
 	</div>
@@ -51,7 +51,7 @@
 				</div>
 				<br/>
 			</div>
-			
+
 		<div class="sideArea area2">
 			<div id="countdownClock">30</div>
 			<hr/>

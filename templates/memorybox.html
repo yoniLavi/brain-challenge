@@ -1,11 +1,11 @@
-<div ng-controller="demo1Controller as demo1">		
+<div>
 	<div class="topLine">
 		<div class="subtop"></div>
-		<div class="subtop scoreBox"><p>Your Score: <span id="showScore">0</span></p></div> 
+		<div class="subtop scoreBox"><p>Your Score: <span id="showScore">0</span></p></div>
 		<div class="subtop attempts"><p>High Score: <span id="recordScore">0</span></p></div>
 		<div class="subtop instructions">
 			<!--modal box for instructions-->
-			<button class="btn btn-danger" ng-click="demo1.uibModal()">Instructions</button>
+			<button class="btn btn-danger" ng-click="openInstructionsModal()">Instructions</button>
 		</div>
 		<div class="subtop"></div>
 	</div>

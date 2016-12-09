@@ -4,9 +4,7 @@
 	</div>
 
   	<div class="modal-body">
-	    <p>Copy the sequence by clicking on the coloured boxes in the same order you're shown.</p>
-		<p>The number of boxes in the sequence will increase by 1 every time.</p>
-		<p>Try and beat your high score!</p>
+  		<p ng-repeat="p in modalBody">{{ p }}</p>
 	 </div>
 	 <div class="modal-footer">
 	    <button type="button" class="btn btn-default" ng-click="goback()">Go Back</button>
